@@ -93,6 +93,7 @@ monitor()
 
 create_queue()
 {
+if [ ! -f /etc/mqm/queues.mqsc ]; then 
   echo "Create queue"
   setmqaut -m ${MQ_QMGR_NAME} -t qmgr -g mqm +all
 #  queues=$(echo ${MQ_QUEUES} | tr ";" "\n")
@@ -109,10 +110,10 @@ create_queue()
       echo "create queues"
       cat /etc/mqm/queues.mqsc
   fi
-
+fi
 }
 
-mq-license-check.sh
+#mq-license-check.sh
 
 config
 create_queue
